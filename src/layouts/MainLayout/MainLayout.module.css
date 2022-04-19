@@ -1,0 +1,17 @@
+.header {
+    min-height: 50px;
+    background: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header a {
+    text-decoration: none;
+    color: beige;
+    font-size: 30px;
+}
+
+.header a[class = "active"] {
+   color: brown;
+}
