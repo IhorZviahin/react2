@@ -1,10 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {carService} from "../../services";
 
 const initialState = {
     cars: [],
     status: null,
-    formErrors: {}
+    formErrors: {},
+    carForUpdate:null
 }
 
 const getAll = createAsyncThunk(
@@ -16,11 +18,23 @@ const getAll = createAsyncThunk(
 );
 
 const deleteById = createAsyncThunk(
-    "deleteCarById",
-    async ({id}, dispatch, {rejectWithValue}) => {
+    "deleteById",
+    async ({id}, {dispatch, rejectWithValue}) => {
         try {
             await carService.deleteById(id);
             dispatch(deleteCarById({id}))
+        } catch (e) {
+            return rejectWithValue({status: e.message})
+        }
+    }
+);
+
+const updateById = createAsyncThunk(
+    "deleteById",
+    async ({id, car}, {dispatch, rejectWithValue}) => {
+        try {
+            await carService.updateById(id, car);
+            dispatch(updateCarById({id, car}))
         } catch (e) {
             return rejectWithValue({status: e.message})
         }
@@ -45,9 +59,19 @@ const carSlice = createSlice({
     initialState,
     reducers: {
         deleteCarById: (state, actions) => {
+            console.log(actions.payload)
             const index = state.cars.findIndex(car => car.id === actions.payload.id);
             state.cars.splice(index, 1)
+        },
+        updateCarById: (state, actions) => {
+            const index = state.cars.findIndex(car => car.id === actions.payload.id);
+            state.cars[index] = {...state.cars[index], ...actions.payload.car}
+            state.carForUpdate = false;
+        },
+        setCarForUpdate: (state, actions) => {
+            state.carForUpdate = actions.payload.car;
         }
+
 
     },
     extraReducers: {
@@ -75,12 +99,14 @@ const carSlice = createSlice({
     }
 });
 
-const {reducer: carReduser, actions: {deleteCarById}} = carSlice;
+const {reducer: carReduser, actions: {deleteCarById, updateCarById, setCarForUpdate}} = carSlice;
 
 const carActions = {
     getAll,
     create,
-    deleteById
+    deleteById,
+    updateById,
+    setCarForUpdate,
 }
 
 export {

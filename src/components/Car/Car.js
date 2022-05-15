@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {carActions} from "../../redux";
 
-const Car = ({car: {id, model, price, year}}) => {
+const Car = ({car, car: {id, model, price, year}}) => {
 
     const dispatch = useDispatch();
 
@@ -14,7 +14,15 @@ const Car = ({car: {id, model, price, year}}) => {
     return (
         <div>
             {id}--{model}--{price}--{year}
-            <button onClick={()=>{deleteById()}}>Delete</button>
+            <button onClick={() => {
+                deleteById()
+            }}>Delete
+            </button>
+            <button onClick={() => {
+                dispatch(carActions.setCarForUpdate({car}))
+            }
+            }>Update
+            </button>
         </div>
     );
 };
