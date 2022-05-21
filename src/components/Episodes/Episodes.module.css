@@ -1,0 +1,26 @@
+.wrapper_episodes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.button {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button button {
+    height: 50px;
+    width: 50px;
+    border: 1px solid blue;
+    cursor: pointer;
+    background: azure;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.button button:hover {
+    background: blue;
+    color: white;
+}

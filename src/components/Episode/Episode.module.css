@@ -1,0 +1,14 @@
+.episode_wrapper {
+    box-sizing: border-box;
+    height: 150px;
+    width: 250px;
+    border: 1px solid blue;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.episode_wrapper:hover {
+    background: #bcbcec;
+}
