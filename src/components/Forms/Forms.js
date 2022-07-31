@@ -16,12 +16,14 @@ const Forms = ({setnewCar}) => {
 
     }
     return (
-        <form onSubmit={handleSubmit(submit)}> // handleSubmit - функция сделает preventdefault - что бы страница не обновилась, а так же вкладываем функцию(любое название) submit
+        // handleSubmit - функция сделает preventdefault - что бы страница не обновилась, а так же вкладываем функцию(любое название) submit
+        // register - это обьект и сейчас мы вкладываем в него данные с ключем "model"
+        <form onSubmit={handleSubmit(submit)}>
             <div>
-                <label> Model <input type="text" {...register("model")}/> </label> // register - это обьект и сейчас мы вкладываем в него данные с ключем "model"
+                <label> Model <input type="text" {...register("model")}/> </label>
             </div>
 
-            {formError.model && <span>{formError.model[0]}</span>}
+            {formError.model && <span>{formError.model[0]}</span>} // ошибки с базы данных
             <div>
                 <label> Price <input type="text" {...register("price")} /> </label>
             </div>
