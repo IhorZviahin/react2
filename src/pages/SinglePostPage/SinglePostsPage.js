@@ -1,23 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import {postsService} from "../../services";
 import {Postid} from "../../components";
 
 const SinglePostsPage = () => {
 
-    const[SinglePosts, SetSinglePosts] =useState(null)
+    const [SinglePosts, SetSinglePosts] = useState(null)
     const {id} = useParams()
+    let {state} = useLocation();
 
-    useEffect( () =>{
-         postsService.getById(id).then(({data})=>SetSinglePosts(data))
-    },[id])
+    useEffect(() => {
+        if (!state) {
+            postsService.getById(id).then(({data}) => SetSinglePosts(data))
+        } else {
+            SetSinglePosts(state)
+        }
+    }, [id, state])
 
-console.log(id)
-console.log(SinglePosts)
 
     return (
         <div>
-            {SinglePosts && <Postid  SinglePosts={SinglePosts}/>}
+            {SinglePosts && <Postid SinglePosts={SinglePosts}/>}
         </div>
     );
 };
