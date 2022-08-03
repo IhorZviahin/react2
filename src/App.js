@@ -1,9 +1,11 @@
-import {Counter} from "./components";
+import {Counter, Form} from "./components";
 
 function App() {
 
   return (
     <div>
+        <Form/>
+        <br/>
       <Counter/>
     </div>
   );
