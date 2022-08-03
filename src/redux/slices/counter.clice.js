@@ -28,10 +28,7 @@ const counterClice = createSlice({
         resetCount2: (state, action) => {
             state.count2 = action.payload || 0
         }
-
-
     }
-
 });
 
 const {reducer: counterReduser, actions:{incCount1, decCount1, resetCount1, decCount2, incCount2, resetCount2}} = counterClice;
