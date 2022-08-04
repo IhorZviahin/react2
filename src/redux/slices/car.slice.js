@@ -32,14 +32,14 @@ const carSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [getAll.pending]: (state, action) => {
+        [getAll.pending]: (state, action) => { // момент загрузки
             state.status = 'pending'
         },
-        [getAll.fulfilled]: (state, action) => {
+        [getAll.fulfilled]: (state, action) => { // когда загрузилось
             state.status = 'fulfilled'
             state.cars = action.payload
         },
-        [getAll.rejected]: (state, action) => {
+        [getAll.rejected]: (state, action) => { // для ошибок
             state.status = 'rejected'
         },
         [create.fulfilled]: (state, action) => {
