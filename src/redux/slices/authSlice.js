@@ -1,42 +1,49 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-
 import {authService} from "../../services";
 
 const initialState = {
     isAuth: null,
-    loginError: null,
+    loginError:null
 };
-
 const login = createAsyncThunk(
-    "login",
+    'login',
     async ({user}) => {
         const {data} = await authService.getTokens(user);
-        return data
+        return data;
     }
 );
+
 const authSlice = createSlice({
-    name: "authSlice",
+    name: 'authSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setAuth:state => {
+            state.isAuth = true
+        },
+        setError:state => {
+            state.loginError = false
+        }
+    },
     extraReducers: (builder) => {
         builder
-            .addCase(login.fulfilled, (state, actions) => {
+            .addCase(login.fulfilled, (state, action) => {
                 state.isAuth = true
                 state.loginError = false
-                const {access, refresh} = actions.payload;
-                localStorage.setItem("access", access)
-                localStorage.setItem("refresh", refresh)
+                const {access, refresh} = action.payload;
+                localStorage.setItem('access', access)
+                localStorage.setItem('refresh', refresh)
             })
-            .addCase(login.rejected, (state, actions) => {
+            .addCase(login.rejected, state => {
                 state.loginError = true
             })
     }
 });
 
-const {reducers: authReducer, actions} = authSlice;
-
+const {reducer: authReducer, actions:{setAuth,setError}} = authSlice;
 const authActions = {
-    login
+    login,
+    setAuth,
+    setError
 }
 
 export {

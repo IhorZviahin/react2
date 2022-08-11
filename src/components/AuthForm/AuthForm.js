@@ -9,7 +9,7 @@ import {authActions} from "../../redux";
 const AuthForm = () => {
     const {register, handleSubmit} = useForm();
     const [isLogin, setIsLogin] = useState(null);
-    const {pathname} = useLocation();
+    const {pathname, state} = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -24,6 +24,7 @@ const AuthForm = () => {
                 navigate("/login")
             } else {
                 await dispatch(authActions.login({user}))
+                navigate(state.pathname, {replace:true})
             }
         } catch (e) {
 
