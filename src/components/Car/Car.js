@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Car = ({car}) => {
+const Car = ({car: {id, model, price, year}}) => {
     return (
         <div>
-            Car
+            {id} -- {model} -- {price} -- {year}
         </div>
     );
 };
