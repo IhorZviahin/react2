@@ -1,35 +1,28 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 
 import {moviesActions} from "../../redux";
-import {MoviesList} from "../../Components";
+import {MoviesList,Pagination} from "../../Components";
 
 const GetAllMoviePage = () => {
 
-    const {movies} = useSelector(state => state.movies);
-    const [query, setQuery] = useSearchParams({page: '1'});
+    const {movies, total_pages, page} = useSelector(state => state.movies);
     const dispatch = useDispatch();
+    const [query, setQuery] = useSearchParams({page: '1'});
 
     useEffect(() => {
         dispatch(moviesActions.getAll({page: query.get('page')}))
     }, [query])
 
-    const nextPage = () => {
-        const nextPage = +query.get('page') + 1
-        setQuery({page: `${nextPage}`})
-    }
-    const prevPage = () => {
-        const prevPage = +query.get('page') - 1
-        setQuery({page: `${prevPage}`})
-    }
+    console.log(query.toString())
 
     return (
         <div>
+
             {movies.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
             <div>
-                <button disabled={nextPage === 0} onClick={prevPage}>prev</button>
-                <button onClick={nextPage}>next</button>
+                <Pagination key={page} page={page} total_pages={total_pages} setQuery={setQuery}/>
             </div>
         </div>
 

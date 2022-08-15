@@ -1,0 +1,7 @@
+.page {
+    margin: 20px 0;
+    border: 1px solid lightgray;
+    border-radius: 100%;
+    padding: 5px 10px;
+    cursor: pointer;
+}
