@@ -15,8 +15,6 @@ const GetAllMoviePage = () => {
         dispatch(moviesActions.getAll({page: query.get('page')}))
     }, [query])
 
-    console.log(query.toString())
-
     return (
         <div>
 
