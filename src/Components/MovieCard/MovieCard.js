@@ -1,7 +1,8 @@
 import React from 'react';
 
 const MovieCard = ({movie}) => {
-    const {original_title, overview, poster_path} = movie;
+    const {original_title, overview, poster_path, genres} = movie;
+    console.log(genres)
     return (
         <div>
             <h1>{original_title}</h1>

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 
 import {moviesActions} from "../../redux";
-import {MoviesList,Pagination} from "../../Components";
+import {MoviesList, Pagination} from "../../Components";
 
 const GetAllMoviePage = () => {
 
@@ -26,5 +26,4 @@ const GetAllMoviePage = () => {
 
     );
 };
-
 export {GetAllMoviePage};

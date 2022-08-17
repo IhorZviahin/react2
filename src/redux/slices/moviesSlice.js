@@ -23,7 +23,6 @@ const getAll = createAsyncThunk(
 const getById = createAsyncThunk(
     "moviesSlice/getById",
     async ({id}) => {
-        console.log(id);
         try {
             const {data} = await moviesService.getMovieById(id);
             return data
@@ -46,7 +45,6 @@ const moviesSlice = createSlice({
                 state.page = data.page;
             })
             .addCase(getById.fulfilled, (state, actions) => {
-                console.log(actions.payload)
                 state.movie = actions.payload;
             })
     }

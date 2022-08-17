@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const MoviesList = ({movie}) => {
-    const {id, original_title, overview, poster_path} = movie;
+const MoviesList = ({movie, genre}) => {
+    const {id, original_title, overview, poster_path, genre_ids} = movie;
+
+    console.log(genre_ids)
+
     return (
         <div>
             <div>
