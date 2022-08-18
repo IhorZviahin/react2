@@ -1,15 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const MoviesList = ({movie, genre}) => {
-    const {id, original_title, overview, poster_path, genre_ids} = movie;
+const MoviesList = ({movie}) => {
 
-    console.log(genre_ids)
+    const {id, original_title, overview, poster_path} = movie;
 
     return (
         <div>
             <div>
-                <img src= {`https://image.tmdb.org/t/p/w500${poster_path}`} alt=""/></div>
+                <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt=""/></div>
             <h2>{original_title}</h2>
             <div>{overview}</div>
 

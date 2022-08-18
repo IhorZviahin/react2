@@ -1,0 +1,7 @@
+.wrapper_mainBloc{
+    display: flex;
+}
+.block_genre{
+    width: 30%;
+    padding-top: 250px;
+}

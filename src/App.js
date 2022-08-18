@@ -1,7 +1,7 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 
 import {Header} from "./layouts";
-import {GetAllMoviePage, MovieDetailsPage, NotFoundPage} from "./pages";
+import {FilmsByGenrePage, GetAllMoviePage, MovieDetailsPage, NotFoundPage} from "./pages";
 
 function App() {
     return (
@@ -9,6 +9,8 @@ function App() {
             <Route path={'/'} element={<Header/>}>
                 <Route index element={<Navigate to={"movie"}/>}/>
                 <Route path={'movie'} element={<GetAllMoviePage/>}/>
+                <Route path={'movie/:genreId'} element={<FilmsByGenrePage/>}/>
+                <Route path={'movie/:genreId/:id'} element={<MovieDetailsPage/>}/>
                 <Route path={'movie/:id'} element={<MovieDetailsPage/>}/>
                 <Route path={'*'} element={<NotFoundPage/>}/>
             </Route>
