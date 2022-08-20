@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useSearchParams} from "react-router-dom";
 
 import {moviesActions} from "../../redux";
-import {GenreBlock, MoviesList, Pagination} from "../../Components";
+import {GenreBlock, MoviesList, Pagination, СhangingMovies} from "../../Components";
 import {genreService} from "../../services/genreService";
 import css from "./MoviePage.module.css"
 
@@ -13,11 +13,22 @@ const GetAllMoviePage = () => {
     const dispatch = useDispatch();
     const [query, setQuery] = useSearchParams({page: '1'});
     const [genres, setGenres] = useState([]);
+    const [all, setAll] = useState(true);
+    const [Popular, setPopular] = useState(false);
 
     useEffect(() => {
-        dispatch(moviesActions.getAll({page: query.get('page')}))
+
+        if (Popular === false && all === true) {
+            dispatch(moviesActions.getAll({page: query.get('page')}))
+        }
+        if (Popular === true) {
+            dispatch(moviesActions.getPopular({page: query.get('page')}))
+        }
+    }, [query, Popular, all])
+
+    useEffect(() => {
         genreService.getAllGenre().then(value => setGenres(value.data.genres))
-    }, [query])
+    }, [])
 
     return (
         <div>
@@ -25,9 +36,16 @@ const GetAllMoviePage = () => {
                 <div>
                     {genres.map(genre => <GenreBlock key={genre.id} genre={genre}/>)}
                 </div>
-                <div>
-                    {movies.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
+
+                <div className={css.wrapper_movie_and_categories}>
+                    <div>
+                        <СhangingMovies setAll={setAll} setPopular={setPopular} Popular={Popular} all={all}/>
+                    </div>
+                    <div className={css.wrapper_movie}>
+                        {movies.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
+                    </div>
                 </div>
+
             </div>
             <div>
                 <Pagination key={page} page={page} total_pages={total_pages} setQuery={setQuery}/>

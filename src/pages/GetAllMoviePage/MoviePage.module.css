@@ -1,7 +1,18 @@
 .wrapper_mainBloc{
     display: flex;
 }
+.wrapper_movie{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 .block_genre{
     width: 30%;
     padding-top: 250px;
+}
+
+.wrapper_movie_and_categories{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 }

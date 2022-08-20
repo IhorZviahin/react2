@@ -10,6 +10,8 @@ const MovieDetailsPage = () => {
     const dispatch = useDispatch();
     const {movie} = useSelector(state => state.movies);
 
+    console.log(id)
+
     useEffect(() => {
         dispatch(moviesActions.getById({id}))
     }, [])

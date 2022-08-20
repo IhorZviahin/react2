@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    align-items: center;
+    height: 45px;
+    background: #100e19;
+}
+
+.UserInfo{
+    padding-left: 10px;
+}

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {moviesActions} from "../../redux";
 import {MoviesList, Pagination} from "../../Components";
+import css from "../GetAllMoviePage/MoviePage.module.css"
 
 const FilmsByGenrePage = () => {
 
@@ -20,7 +21,9 @@ const FilmsByGenrePage = () => {
 
     return (
         <div>
-            {moviesByGenres.map(movieByGenres => <MoviesList key={movieByGenres.id} movie={movieByGenres}/>)}
+            <div className={css.wrapper_movie}>
+                {moviesByGenres.map(movieByGenres => <MoviesList key={movieByGenres.id} movie={movieByGenres}/>)}
+            </div>
             <div>
                 <Pagination key={pageByGenres} page={pageByGenres} total_pages={total_pagesByGenres}
                             setQuery={setQuery}/>

@@ -1,0 +1,12 @@
+.wrapper_cardMovie{
+    width: 200px;
+    height: auto;
+    background: aqua;
+    padding: 30px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.img{
+    width: 175px;
+}
