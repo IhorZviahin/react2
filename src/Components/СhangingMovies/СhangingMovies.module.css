@@ -1,0 +1,32 @@
+.changeMovies div{
+    display: inline-block;
+    background: azure;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 500ms ease;
+}
+
+.changeMovies div:hover{
+    border-color: silver;
+    transform: scale(1.1);
+}
+.changeMoviesActive div:hover{
+    border-color: silver;
+    transform: scale(1.1);
+}
+
+.changeMoviesActive{
+    display: inline-block;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 500ms ease;
+    background: #49d7d7;
+}
