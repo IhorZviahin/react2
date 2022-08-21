@@ -13,18 +13,19 @@ const GetAllMoviePage = () => {
     const dispatch = useDispatch();
     const [query, setQuery] = useSearchParams({page: '1'});
     const [genres, setGenres] = useState([]);
-    const [all, setAll] = useState(true);
     const [Popular, setPopular] = useState(false);
+
+    console.log(Popular)
 
     useEffect(() => {
 
-        if (Popular === false && all === true) {
-            dispatch(moviesActions.getAll({page: query.get('page')}))
-        }
         if (Popular === true) {
             dispatch(moviesActions.getPopular({page: query.get('page')}))
+        } else {
+            dispatch(moviesActions.getAll({page: query.get('page')}))
         }
-    }, [query, Popular, all])
+
+    }, [query, Popular])
 
     useEffect(() => {
         genreService.getAllGenre().then(value => setGenres(value.data.genres))
@@ -39,7 +40,7 @@ const GetAllMoviePage = () => {
 
                 <div className={css.wrapper_movie_and_categories}>
                     <div>
-                        <СhangingMovies setAll={setAll} setPopular={setPopular} Popular={Popular} all={all}/>
+                        <СhangingMovies setPopular={setPopular} Popular={Popular}/>
                     </div>
                     <div className={css.wrapper_movie}>
                         {movies.map(movie => <MoviesList key={movie.id} movie={movie}/>)}

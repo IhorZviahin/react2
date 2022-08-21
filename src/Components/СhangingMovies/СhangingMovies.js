@@ -1,6 +1,6 @@
 import React from 'react';
 
-const СhangingMovies = ({setAll, setPopular, Popular, all}) => {
+const СhangingMovies = ({setPopular, Popular}) => {
 
     const PopularMovies = ()=>{
         if(Popular === true){
@@ -11,22 +11,10 @@ const СhangingMovies = ({setAll, setPopular, Popular, all}) => {
         }
     }
 
-    const AllMovi = () =>{
-        if(all === true){
-            setAll(false)
-        }
-        if(all === false){
-            setAll(true)
-        }
-    }
-
-
-
     return (
 
         <div>
             <div onClick={()=>PopularMovies()}>Popular movies</div>
-            <div onClick={()=>AllMovi()}>All</div>
         </div>
     );
 };
