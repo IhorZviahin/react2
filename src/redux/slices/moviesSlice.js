@@ -23,6 +23,19 @@ const getAll = createAsyncThunk(
     }
 );
 
+const searchMovie = createAsyncThunk(
+    "moviesSlice/searchMovie",
+    async ({page, movie}) => {
+        try {
+            const {data} = await moviesService.searchMovie(page, movie);
+            console.log(data)
+            return data
+        } catch (e) {
+
+        }
+    }
+);
+
 const getPopular = createAsyncThunk(
     "moviesSlice/getPopular",
     async ({page}) => {
@@ -72,11 +85,19 @@ const moviesSlice = createSlice({
                 state.total_pages = data.total_pages;
                 state.page = data.page;
             })
+            .addCase(searchMovie.fulfilled, (state, actions) => {
+                const data = actions.payload;
+                console.log(data)
+                state.movies = data.results;
+                state.total_pages = data.total_pages;
+                state.page = data.page;
+            })
             .addCase(getPopular.fulfilled, (state, actions) => {
                 const data = actions.payload;
                 state.movies = data.results;
                 state.total_pages = data.total_pages;
-                state.page = data.page;})
+                state.page = data.page;
+            })
             .addCase(getMoviesByGenres.fulfilled, (state, actions) => {
                 const data = actions.payload;
                 state.moviesByGenres = data.results;
@@ -95,7 +116,8 @@ const moviesActions = {
     getAll,
     getById,
     getMoviesByGenres,
-    getPopular
+    getPopular,
+    searchMovie,
 }
 
 export {

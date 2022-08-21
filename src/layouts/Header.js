@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink, Outlet} from "react-router-dom";
 
 import css from "./header.module.css"
-import {Theme, UserInfo} from "../Components";
+import {SearchForm, Theme, UserInfo} from "../Components";
 
 const Header = () => {
     return (
@@ -11,6 +11,7 @@ const Header = () => {
                 <NavLink to="/">Movies</NavLink>
 
                 <div className={css.headertwo}>
+                    <SearchForm/>
                     <Theme/>
                     <div className={css.UserInfo}>
                         <UserInfo/>
