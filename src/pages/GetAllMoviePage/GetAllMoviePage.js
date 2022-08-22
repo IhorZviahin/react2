@@ -9,13 +9,11 @@ import css from "./MoviePage.module.css"
 
 const GetAllMoviePage = () => {
 
-    const {movies, total_pages, page} = useSelector(state => state.movies);
+    const {movies, total_pages, page, movieSearch} = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const [query, setQuery] = useSearchParams({page: '1'});
     const [genres, setGenres] = useState([]);
     const [Popular, setPopular] = useState(false);
-
-    console.log(Popular)
 
     useEffect(() => {
 
@@ -30,6 +28,10 @@ const GetAllMoviePage = () => {
     useEffect(() => {
         genreService.getAllGenre().then(value => setGenres(value.data.genres))
     }, [])
+
+    useEffect(() => {
+        dispatch(moviesActions.searchMovie(movieSearch))
+    }, [movieSearch])
 
     return (
         <div>

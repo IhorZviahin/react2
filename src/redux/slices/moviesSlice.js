@@ -4,13 +4,11 @@ import {moviesService} from "../../services";
 const initialState = {
     movies: [],
     moviesByGenres: [],
-    moviesBySearch: [],
+    movieSearch: null,
     total_pages: null,
     total_pagesByGenres: null,
-    total_pagesSearch: null,
     page: null,
     pageByGenres: null,
-    pageBySearch: null,
     movie: null,
 };
 
@@ -28,9 +26,9 @@ const getAll = createAsyncThunk(
 
 const searchMovie = createAsyncThunk(
     "moviesSlice/searchMovie",
-    async ({page, movie}) => {
+    async ({movie}) => {
         try {
-            const {data} = await moviesService.searchMovie(page, movie);
+            const {data} = await moviesService.searchMovie(movie);
             console.log(data)
             return data
         } catch (e) {
@@ -79,7 +77,11 @@ const getById = createAsyncThunk(
 const moviesSlice = createSlice({
     name: 'moviesSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        movieSearch: (state, action) => {
+            state.movieSearch = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAll.fulfilled, (state, actions) => {
@@ -91,9 +93,9 @@ const moviesSlice = createSlice({
             .addCase(searchMovie.fulfilled, (state, actions) => {
                 const data = actions.payload;
                 console.log(data)
-                state.moviesBySearch = data.results;
-                state.total_pagesSearch = data.total_pages;
-                state.pageBySearch = data.page;
+                state.movies = data.results;
+                state.total_pages = '1'
+                state.page = data.page;
             })
             .addCase(getPopular.fulfilled, (state, actions) => {
                 const data = actions.payload;
@@ -113,7 +115,7 @@ const moviesSlice = createSlice({
     }
 });
 
-const {reducer: moviesReduser, actions} = moviesSlice;
+const {reducer: moviesReduser, actions: {movieSearch}} = moviesSlice;
 
 const moviesActions = {
     getAll,
@@ -121,6 +123,7 @@ const moviesActions = {
     getMoviesByGenres,
     getPopular,
     searchMovie,
+    movieSearch
 }
 
 export {
