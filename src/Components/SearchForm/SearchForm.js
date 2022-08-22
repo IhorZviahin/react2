@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useSearchParams} from "react-router-dom";
@@ -9,14 +9,19 @@ const SearchForm = () => {
     const [query, setQuery] = useSearchParams({page: '1'});
     const {reset, register, handleSubmit} = useForm();
     const dispatch = useDispatch();
-    const {movies} = useSelector(state => state.movies);
+    const {moviesBySearch} = useSelector(state => state.movies);
 
     const submit = (movie) => {
-        dispatch(moviesActions.searchMovie( {movie, page: query.get('page')}))
-        console.log(movie)
+        useEffect(()=>{
+            dispatch(moviesActions.searchMovie( {movie, page: query.get('page')}))
+            console.log(movie)
+        },[])
+
     };
 
-    console.log(movies)
+
+
+    console.log(moviesBySearch)
 
     return (
         <form onSubmit={handleSubmit(submit)}>

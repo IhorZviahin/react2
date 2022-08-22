@@ -4,10 +4,13 @@ import {moviesService} from "../../services";
 const initialState = {
     movies: [],
     moviesByGenres: [],
+    moviesBySearch: [],
     total_pages: null,
     total_pagesByGenres: null,
+    total_pagesSearch: null,
     page: null,
     pageByGenres: null,
+    pageBySearch: null,
     movie: null,
 };
 
@@ -88,9 +91,9 @@ const moviesSlice = createSlice({
             .addCase(searchMovie.fulfilled, (state, actions) => {
                 const data = actions.payload;
                 console.log(data)
-                state.movies = data.results;
-                state.total_pages = data.total_pages;
-                state.page = data.page;
+                state.moviesBySearch = data.results;
+                state.total_pagesSearch = data.total_pages;
+                state.pageBySearch = data.page;
             })
             .addCase(getPopular.fulfilled, (state, actions) => {
                 const data = actions.payload;
