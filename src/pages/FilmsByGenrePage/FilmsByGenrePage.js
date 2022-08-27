@@ -17,8 +17,6 @@ const FilmsByGenrePage = () => {
         dispatch(moviesActions.getMoviesByGenres({genreId, page: query.get('page')}))
     }, [query])
 
-    console.log(query.toString())
-
     return (
         <div>
             <div className={css.wrapper_movie}>
