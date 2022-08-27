@@ -11,13 +11,15 @@ const MovieSearchPage = () => {
 
     const dispatch = useDispatch();
     const {movieSearch, moviesBySearch, total_pagesBySearch, pageBySearch} = useSelector(state => state.movies);
-    // const [query, setQuery] = useSearchParams({page: '1'});
+    const [query, setQuery] = useSearchParams({page: '1'});
 
+    //movieSearch
+    //{movieSearch, page: query.get('page')}
     useEffect(() => {
-        dispatch(moviesActions.searchMovie(movieSearch))
-    }, [movieSearch])
+        dispatch(moviesActions.searchMovie(movieSearch, pageBySearch))
+    }, [movieSearch, pageBySearch])
 
-// console.log(query.toString())
+console.log(query.toString())
 console.log(movieSearch)
     return (
         <div>
@@ -25,13 +27,13 @@ console.log(movieSearch)
                 {moviesBySearch.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
             </div>
 
-            {/*<div>*/}
-            {/*    {<Pagination*/}
-            {/*        key={pageBySearch}*/}
-            {/*        page={pageBySearch}*/}
-            {/*        total_pages={total_pagesBySearch}*/}
-            {/*        setQuery={setQuery}/>}*/}
-            {/*</div>*/}
+            <div>
+                {<Pagination
+                    key={pageBySearch}
+                    page={pageBySearch}
+                    total_pages={total_pagesBySearch}
+                    setQuery={setQuery}/>}
+            </div>
         </div>
 
     );

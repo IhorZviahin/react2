@@ -3,7 +3,7 @@ import {urls} from "../constants";
 
 export const moviesService = {
     getAll:(page=1)=>axiosService.get(urls.movies,{params: {page}}),
-    searchMovie:(movieSearch)=>axiosService.get(`${urls.search}?query=${movieSearch}`),
+    searchMovie:(movieSearch, page)=>axiosService.get(`${urls.search}?query=${movieSearch}`, {params: {page}}),
     getPopular:(page=1)=>axiosService.get(`${urls.movies}/?sort_by=vote_count.desc`,{params: {page}}),
     getWithGenresId:(id, page=1)=>axiosService.get(`${urls.movies}/?with_genres=${id}`,{params: {page}},),
     getMovieById:(id)=>axiosService.get(`${urls.movie}/${id}`)

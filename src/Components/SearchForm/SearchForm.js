@@ -21,7 +21,7 @@ const SearchForm = () => {
 
         <form onSubmit={handleSubmit(submit)}>
             <div>
-                <input type="text" {...register("movie")}/>
+                <input type="text" {...register("movieSearch")}/>
                     <button>ok</button>
             </div>
         </form>
