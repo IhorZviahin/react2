@@ -8,11 +8,14 @@ const Header = () => {
     return (
         <div>
             <div className={css.header}>
+
                 <NavLink to="/">Movies</NavLink>
 
                 <div className={css.headertwo}>
+
                     <SearchForm/>
                     <Theme/>
+
                     <div className={css.UserInfo}>
                         <UserInfo/>
                     </div>

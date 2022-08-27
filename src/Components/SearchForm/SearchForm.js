@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {Link, NavLink} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {moviesActions} from "../../redux";
 import css from "../MoviesList/MovieList.module.css";
 
@@ -11,6 +11,7 @@ const SearchForm = () => {
 
     const submit = async (movie) => {
         dispatch(moviesActions.movieSearch(movie))
+        Navigate()
     };
 
 
