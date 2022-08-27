@@ -11,7 +11,7 @@ function App() {
             <main>
                 <button className="open-btn" onClick={()=> {
                     setModalActive(true)
-                }}>Open module window</button>
+                }}>Open modale window</button>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iste magni porro, sint sunt
                     voluptates.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iste magni porro, sint sunt
