@@ -1,41 +1,25 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useSearchParams} from "react-router-dom";
 
 import {moviesActions} from "../../redux";
-import {MoviesList, Pagination} from "../../Components";
+import {MoviesList} from "../../Components";
 import css from "../GetAllMoviePage/MoviePage.module.css";
 
 
 const MovieSearchPage = () => {
 
     const dispatch = useDispatch();
-    const {movieSearch, moviesBySearch, total_pagesBySearch, pageBySearch} = useSelector(state => state.movies);
-    const [query, setQuery] = useSearchParams({page: '1'});
+    const {movieSearch, moviesBySearch} = useSelector(state => state.movies);
 
-    //movieSearch
-    //{movieSearch, page: query.get('page')}
     useEffect(() => {
-        dispatch(moviesActions.searchMovie(movieSearch, pageBySearch))
-    }, [movieSearch, pageBySearch])
+        dispatch(moviesActions.searchMovie(movieSearch))
+    }, [movieSearch])
 
-console.log(query.toString())
-console.log(movieSearch)
+    console.log(movieSearch)
     return (
-        <div>
-            <div className={css.wrapper_movie}>
-                {moviesBySearch.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
-            </div>
-
-            <div>
-                {<Pagination
-                    key={pageBySearch}
-                    page={pageBySearch}
-                    total_pages={total_pagesBySearch}
-                    setQuery={setQuery}/>}
-            </div>
+        <div className={css.wrapper_movie}>
+            {moviesBySearch.map(movie => <MoviesList key={movie.id} movie={movie}/>)}
         </div>
-
     );
 };
 

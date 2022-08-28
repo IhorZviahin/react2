@@ -33,9 +33,9 @@ const getAll = createAsyncThunk(
 
 const searchMovie = createAsyncThunk(
     "moviesSlice/searchMovie",
-    async ({movieSearch, page}) => {
+    async ({movieSearch}) => {
         try {
-            const {data} = await moviesService.searchMovie(movieSearch, page);
+            const {data} = await moviesService.searchMovie(movieSearch);
             return data
         } catch (e) {
             console.log(e)
