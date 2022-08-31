@@ -8,23 +8,18 @@ const Header = () => {
     return (
         <div>
             <div className={css.header}>
-
-                <NavLink to="/">Movies</NavLink>
-
+                <NavLink to="/">Home</NavLink>
                 <div className={css.headertwo}>
-
                     <SearchForm/>
                     <Theme/>
-
-                    <div className={css.UserInfo}>
+                    <div>
                         <UserInfo/>
                     </div>
                 </div>
-
             </div>
             <Outlet/>
             <div className={css.header}>
-                something
+                Work by https://github.com/IhorZviahin
             </div>
         </div>
     );

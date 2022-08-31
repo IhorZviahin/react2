@@ -17,7 +17,7 @@ const Pagination = ({page, total_pages, setQuery}) => {
     return (
         <div className={css.main_bloc}>
             <button disabled={page === 1} onClick={prevPage}>prev</button>
-            <div>{page} -- {total_pages}</div>
+            <div>{page} - {total_pages}</div>
             <button disabled={page === total_pages} onClick={nextPage}>next</button>
         </div>
     );

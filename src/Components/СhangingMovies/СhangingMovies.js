@@ -5,12 +5,6 @@ import css from "./СhangingMovies.module.css"
 const СhangingMovies = ({setPopular, Popular}) => {
 
     const PopularMovies = () => {
-        // if (Popular === true) {
-        //     setPopular(false)
-        // }
-        // if (Popular === false) {
-        //     setPopular(true)
-        // }
         setPopular(!Popular)
     }
 

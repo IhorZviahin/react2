@@ -32,7 +32,7 @@ const GetAllMoviePage = () => {
     return (
         <div>
             <div className={css.wrapper_mainBloc}>
-                <div>
+                <div className={css.GenreBlock}>
                     {genres.map(genre => <GenreBlock key={genre.id} genre={genre}/>)}
                 </div>
 

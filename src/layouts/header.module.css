@@ -3,9 +3,10 @@
     align-items: center;
     justify-content: space-between;
     height: 45px;
-    background: #100e19;
+    background: #000000;
     padding-left: 20px;
     padding-right: 20px;
+    color: beige;
 }
 
 .UserInfo{
@@ -14,4 +15,15 @@
 .headertwo{
     display: flex;
     align-items: center;
+    column-gap: 25px;
+}
+.header a {
+    text-decoration: none;
+    color: beige;
+    font-size: 22px;
+}
+.header a:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+    transition: 0.1s;
 }

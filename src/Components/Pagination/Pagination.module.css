@@ -1,4 +1,20 @@
-.main_bloc{
+.main_bloc {
     display: flex;
-    justify-content: center
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    column-gap: 15px;
+}
+
+.main_bloc button {
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50px;
+    height: 30px;
+    color: black;
+    border: 2px solid #000000;
+    font-size: 15px;
+}
+.main_bloc button:hover{
+    color: red;
 }

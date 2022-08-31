@@ -1,18 +1,38 @@
-.wrapper_mainBloc{
+.wrapper_mainBloc {
     display: flex;
 }
-.wrapper_movie{
+
+.wrapper_movie {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.block_genre{
+
+.block_genre {
     width: 30%;
     padding-top: 250px;
 }
 
-.wrapper_movie_and_categories{
+.wrapper_movie_and_categories {
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+}
+
+.GenreBlock {
+    width: 30%;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.GenreBlock a {
+    padding: 10px;
+    font-size: 17px;
+    text-decoration: none;
+    color: black;
+}
+
+.GenreBlock a:hover {
+    text-decoration: underline;
+    color: red;
 }

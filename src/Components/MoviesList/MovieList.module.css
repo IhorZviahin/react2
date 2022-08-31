@@ -1,15 +1,43 @@
 .wrapper_cardMovie{
     width: 200px;
     height: auto;
-    background: aqua;
-    padding: 30px;
     margin: 10px;
     display: flex;
     flex-direction: column;
+    background: rgba(192, 192, 192, 0.19);
+    border-radius: 6px;
+    column-gap: 3px;
+}
+.wrapper_cardMovie:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+    border-radius: 6px;
+}
+.name{
+    padding: 5px;
+}
+
+.name a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+.name a:hover{
+    color: rgba(255, 0, 0, 0.71);
 }
 .img{
-    width: 175px;
+    width: 100%;
+    border-radius: 6px 6px 0 0;
 }
+
+.release_date{
+    padding: 5px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.66);
+}
+
 .StarsRating{
     display: flex;
+    padding: 5px;
+    font-size: 16px;
 }
